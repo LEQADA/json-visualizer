@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const jsonData = JSON.parse(jsonString);
             treeContainer.classList.add('tree'); // Add class for styling
-            const rootElement = buildTree(jsonData, 'root'); // Changed variable name slightly
+            const rootElement = buildTree(jsonData, 'root', true, true); // Changed variable name slightly
             if (rootElement) {
                 treeContainer.appendChild(rootElement);
             } else {
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {boolean} isRoot - Flag if this is the initial call.
      * @returns {HTMLElement | null} - The UL element representing the node, or null for primitives that are root.
      */
-    function buildTree(data, keyName, isRoot = true) {
+    function buildTree(data, keyName, isRoot = true, firstRun = false) {
         const type = typeof data;
         const isObject = type === 'object' && data !== null && !Array.isArray(data);
         const isArray = Array.isArray(data);
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Create the UL that will hold the children
              const childUl = document.createElement('ul');
-             if (keyName === 'root') {
+             if (firstRun === true) {
                 childUl.className = 'first-root'
              }
              let hasVisibleChildren = false;
