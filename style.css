@@ -45,11 +45,18 @@ textarea#jsonInput {
 }
 
 /* Buttons */
+
+.button-group {
+  display: flex; /* Enable flex container */
+  justify-content: space-between; /* Distribute space evenly between items */
+  gap: 10px; /* Add 10px gap between items */
+}
 .button-group button { /* Style all buttons within the group */
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: auto;
+    margin-top: 0;
+    margin-right: 0px;
     padding: 10px 15px;
-    margin-top: 10px; /* Add space above each button */
     background-color: #0e639c;
     color: #fff;
     border: none;
@@ -59,13 +66,18 @@ textarea#jsonInput {
     transition: background-color 0.2s ease;
     box-sizing: border-box;
 }
+.button-group button {
+  /* ... other styles ... */
+  flex-grow: 1; /* Allow buttons to grow and fill available space */
+  margin-top: 0; /* Remove top margin */
+}
 
 .button-group button:hover {
     background-color: #1177bb;
 }
 
 /* Specific margin adjustment if needed, e.g., for the last button */
-button#renderBtn {
+.button-group {
      margin-bottom: 20px; /* Keep bottom margin before error message */
 }
 
