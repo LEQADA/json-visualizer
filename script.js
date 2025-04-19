@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const jsonInput = document.getElementById('jsonInput');
     const renderBtn = document.getElementById('renderBtn');
     const formatBtn = document.getElementById('formatBtn'); // New button
-    const minifyBtn = document.getElementById('minifyBtn'); // New button
+    const minimizeBtn = document.getElementById('minimizeBtn'); // New button
     const treeContainer = document.getElementById('treeContainer');
     const errorMsg = document.getElementById('errorMsg');
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    minifyBtn.addEventListener('click', () => {
+    minimizeBtn.addEventListener('click', () => {
         errorMsg.textContent = ''; // Clear errors
         const jsonString = jsonInput.value.trim();
          if (!jsonString) {
@@ -115,13 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 listContainer.appendChild(keySpan);
             }
 
-            // Add Type Indicator ({...} or [...] or {} or []) and count
+            // Add Type Indicator ({} or [] or {} or []) and count
             const typeIndicator = document.createElement('span');
             typeIndicator.classList.add(isObject ? 'value-object' : 'value-array');
             const itemCount = isObject ? Object.keys(data).length : data.length;
 
             if (itemCount > 0) {
-                 typeIndicator.textContent = isObject ? `{...}` : `[...]`; // Simpler indicator when children exist
+                 typeIndicator.textContent = isObject ? `{}` : `[]`; // Simpler indicator when children exist
             } else {
                  typeIndicator.textContent = isObject ? '{}' : '[]'; // Empty indicator
             }
