@@ -1,0 +1,148 @@
+/* Basic Reset & Dark Mode Theme */
+body {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #252526;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    color: #569cd6;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Input Area */
+textarea#jsonInput {
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in element's total width */
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #3c3c3c;
+    color: #d4d4d4;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Buttons */
+.button-group button { /* Style all buttons within the group */
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 10px; /* Add space above each button */
+    background-color: #0e639c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.button-group button:hover {
+    background-color: #1177bb;
+}
+
+/* Specific margin adjustment if needed, e.g., for the last button */
+button#renderBtn {
+     margin-bottom: 20px; /* Keep bottom margin before error message */
+}
+
+
+/* Error Message */
+.error-message {
+    color: #f48771;
+    margin-bottom: 15px;
+    font-weight: bold;
+    white-space: pre-wrap; /* Keep formatting of error message */
+    min-height: 1.2em; /* Reserve space even when empty */
+}
+
+/* Tree Styling */
+#treeContainer {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    text-align: left;
+}
+
+.tree ul {
+    list-style-type: none;
+    padding-left: 20px; /* Indentation for nested levels */
+    margin: 0;
+    border-left: 1px solid #444; /* Vertical line indicating nesting */
+}
+
+.tree li {
+    position: relative;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* Toggle Button [+] / [-] */
+.toggle {
+    cursor: pointer;
+    display: inline-block;
+    width: 1em; /* Reserve space */
+    text-align: center;
+    margin-right: 5px;
+    font-weight: bold;
+    color: #888;
+    user-select: none; /* Prevent text selection on click */
+}
+
+.toggle:hover {
+    color: #bbb;
+}
+
+/* Hide nested list when collapsed */
+.collapsed > ul {
+    display: none;
+}
+
+/* Key Styling */
+.key {
+    color: #9cdcfe; /* Light blue for keys */
+    margin-right: 5px;
+}
+
+/* Value Styling */
+.value {
+    margin-left: 5px;
+}
+
+.value-string {
+    color: #ce9178; /* Orange for strings */
+}
+
+.value-number {
+    color: #b5cea8; /* Light green for numbers */
+}
+
+.value-boolean {
+    color: #569cd6; /* Blue for booleans */
+}
+
+.value-null {
+    color: #808080; /* Gray for null */
+}
+
+.value-object,
+.value-array {
+    color: #888; /* Dim text for object/array indicators */
+    font-style: italic;
+}
