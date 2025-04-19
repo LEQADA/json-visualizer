@@ -163,4 +163,5 @@ textarea#jsonInput {
 .value-array {
     color: #888; /* Dim text for object/array indicators */
     font-style: italic;
+    font-size: 10px;
 }
