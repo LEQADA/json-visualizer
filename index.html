@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Tree Viewer</title>
+    <title>JSON Visualizer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>JSON Hierarchy Visualizer</h1>
+    <h1>JSON Visualizer</h1>
 
     <div class="container">
         <textarea id="jsonInput" placeholder="Paste your JSON here..." rows="10"></textarea>
@@ -21,7 +21,9 @@
         <div id="treeContainer">
             </div>
     </div>
-
+    <footer class="footer">
+        <p>This visualizer does not send the JSON anywhere. All processing is happening in the browser.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
