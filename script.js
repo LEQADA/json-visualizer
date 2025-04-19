@@ -131,6 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Create the UL that will hold the children
              const childUl = document.createElement('ul');
+             if (keyName === 'root') {
+                childUl.className = 'first-root'
+             }
              let hasVisibleChildren = false;
 
              // Recursively build children
