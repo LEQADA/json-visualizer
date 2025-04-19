@@ -98,12 +98,18 @@ textarea#jsonInput {
     text-align: left;
 }
 
+
+.tree ul.first-root {
+    border-left: none;
+}
+
 .tree ul {
     list-style-type: none;
     padding-left: 20px; /* Indentation for nested levels */
     margin: 0;
     border-left: 1px solid #444; /* Vertical line indicating nesting */
 }
+
 
 .tree li {
     position: relative;
