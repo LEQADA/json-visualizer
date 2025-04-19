@@ -23,6 +23,12 @@ h1 {
     margin-bottom: 25px;
 }
 
+footer {
+    color: #569cd6;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
 /* Input Area */
 textarea#jsonInput {
     width: 100%;
