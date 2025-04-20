@@ -81,6 +81,11 @@ textarea#jsonInput {
      margin-bottom: 20px; /* Keep bottom margin before error message */
 }
 
+/* Hide Expand/Collapse buttons by default */
+#expandAllBtn,
+#collapseAllBtn {
+    display: none;
+}
 
 /* Error Message */
 .error-message {
