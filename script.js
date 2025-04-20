@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const jsonInput = document.getElementById('jsonInput');
     const renderBtn = document.getElementById('renderBtn');
-    const formatBtn = document.getElementById('formatBtn'); // New button
-    const minimizeBtn = document.getElementById('minimizeBtn'); // New button
+    const formatBtn = document.getElementById('formatBtn'); 
+    const minimizeBtn = document.getElementById('minimizeBtn');
+    const expandAllBtn = document.getElementById('expandAllBtn');
+    const collapseAllBtn = document.getElementById('collapseAllBtn');
+
     const treeContainer = document.getElementById('treeContainer');
     const errorMsg = document.getElementById('errorMsg');
 
@@ -25,6 +28,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    expandAllBtn.addEventListener('click', () => {
+        // Find all toggle elements within the tree container
+        const toggles = treeContainer.querySelectorAll('.toggle');
+        toggles.forEach(toggle => {
+            const parentNode = toggle.closest('li, div'); // Find parent li or div
+            if (parentNode) {
+                parentNode.classList.remove('collapsed'); // Ensure it's expanded
+                toggle.textContent = '-'; // Set toggle text to expanded state
+            }
+        });
+    });
+    expandAllBtn.addEventListener('click', () => {
+        // Find all toggle elements within the tree container
+        const toggles = treeContainer.querySelectorAll('.toggle');
+        toggles.forEach(toggle => {
+            const parentNode = toggle.closest('li, div'); // Find parent li or div
+            if (parentNode) {
+                parentNode.classList.remove('collapsed'); // Ensure it's expanded
+                toggle.textContent = '-'; // Set toggle text to expanded state
+            }
+        });
+    });
+
+    collapseAllBtn.addEventListener('click', () => {
+        // Find all toggle elements within the tree container
+        const toggles = treeContainer.querySelectorAll('.toggle');
+        toggles.forEach(toggle => {
+            const parentNode = toggle.closest('li, div'); // Find parent li or div
+             if (parentNode) {
+                parentNode.classList.add('collapsed'); // Ensure it's collapsed
+                toggle.textContent = '+'; // Set toggle text to collapsed state
+            }
+        });
+         // Special case: If the root itself is collapsible (though current buildTree doesn't make it so)
+         // const rootDiv = treeContainer.querySelector(':scope > div > div'); // Target the first item's container div
+         // if (rootDiv && rootDiv.querySelector(':scope > .toggle')) {
+         //    rootDiv.classList.add('collapsed');
+         //    rootDiv.querySelector(':scope > .toggle').textContent = '+';
+         // }
+    });
+
     minimizeBtn.addEventListener('click', () => {
         errorMsg.textContent = ''; // Clear errors
         const jsonString = jsonInput.value.trim();
@@ -43,9 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renderBtn.addEventListener('click', () => {
-        treeContainer.innerHTML = ''; // Clear previous tree
-        errorMsg.textContent = '';   // Clear previous error
-        treeContainer.classList.remove('tree'); // Remove tree class initially
+        // --- Hide Expand/Collapse buttons initially on each render attempt ---
+        expandAllBtn.style.display = 'none';
+        collapseAllBtn.style.display = 'none';
+
+        // --- Clear previous state ---
+        treeContainer.innerHTML = '';
+        errorMsg.textContent = '';
+        treeContainer.classList.remove('tree');
 
         const jsonString = jsonInput.value.trim();
         if (!jsonString) {
@@ -56,24 +105,32 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const jsonData = JSON.parse(jsonString);
             treeContainer.classList.add('tree'); // Add class for styling
-            const rootElement = buildTree(jsonData, 'root', true, true); // Changed variable name slightly
+            const rootElement = buildTree(jsonData, 'root', true, true);
+            let treeRendered = false; // Flag to track if something will be displayed
+
             if (rootElement) {
                 treeContainer.appendChild(rootElement);
+                treeRendered = true;
             } else {
                 // Handle cases where JSON is just a primitive at the root
                 const primitiveDiv = document.createElement('div');
                  primitiveDiv.style.paddingLeft = '5px'; // Add some padding
                 renderValue(primitiveDiv, jsonData);
                 treeContainer.appendChild(primitiveDiv);
+                treeRendered = true;
             }
-
+            // --- Show Expand/Collapse buttons ONLY if tree rendering was successful ---
+            if (treeRendered && treeContainer.querySelector('.toggle')) { // Only show if there are actually toggles
+                expandAllBtn.style.display = 'block';
+                collapseAllBtn.style.display = 'block';
+            }
         } catch (error) {
             console.error("JSON Parsing Error:", error);
             errorMsg.textContent = `Invalid JSON: Cannot visualize. ${error.message}`;
         }
     });
 
-    // --- Helper Functions (Keep the existing buildTree, renderValue, toggleNode) ---
+    // --- Helper Functions ---
 
     /**
      * Recursively builds the HTML UL/LI structure for the JSON tree.
