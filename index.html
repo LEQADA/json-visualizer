@@ -6,6 +6,7 @@
       <meta name="keywords" content="json, viewer, visualizer, formatter, prettifier, minifyer, minimizer, dark, mode">
     <meta name="description" content="JSON vizualizer and formatter with in-browser processing and dark mode.">
     <title>JSON Visualizer</title>
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,12 +17,13 @@
         <textarea id="jsonInput" placeholder="Paste your JSON here..." rows="10"></textarea>
 
         <div class="button-group">
-            <button id="renderBtn">Visualize JSON</button> <button id="formatBtn">Format JSON</button> <button id="minimizeBtn">Minimize JSON</button>
+            <button id="renderBtn">Visualize JSON</button> <button id="formatBtn">Format JSON</button> <button id="minimizeBtn">Minimize JSON</button> 
         </div>
-
+        <div class="button-group">
+            <button id="expandAllBtn">Expand All</button>   <button id="collapseAllBtn">Collapse All</button>
+        </div>
         <div id="errorMsg" class="error-message"></div>
-        <div id="treeContainer">
-            </div>
+        <div id="treeContainer"></div>
     </div>
     <footer class="footer">
         <p>This visualizer does not send the JSON anywhere. All processing is happening in the browser.</p>
