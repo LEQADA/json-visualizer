@@ -67,7 +67,6 @@ textarea#jsonInput {
     box-sizing: border-box;
 }
 .button-group button {
-  /* ... other styles ... */
   flex-grow: 1; /* Allow buttons to grow and fill available space */
   margin-top: 0; /* Remove top margin */
 }
