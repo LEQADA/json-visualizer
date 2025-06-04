@@ -146,16 +146,17 @@ textarea#jsonInput {
 .key {
     color: #9cdcfe; /* Light blue for keys */
     margin-right: 5px;
+    word-wrap: break-word;
 }
 
 /* Value Styling */
 .value {
     margin-left: 5px;
+    word-wrap: break-word;
 }
 
 .value-string {
     color: #ce9178; /* Orange for strings */
-    word-wrap: break-word;
 }
 
 .value-number {
