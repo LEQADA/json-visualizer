@@ -155,6 +155,7 @@ textarea#jsonInput {
 
 .value-string {
     color: #ce9178; /* Orange for strings */
+    word-wrap: break-word;
 }
 
 .value-number {
